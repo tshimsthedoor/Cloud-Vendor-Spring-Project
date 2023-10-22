@@ -1,11 +1,19 @@
 package com.thedorcode.restdemo.service.impl;
 
 import com.thedorcode.restdemo.model.CloudVendor;
+import com.thedorcode.restdemo.repository.CloudVendorRepository;
 import com.thedorcode.restdemo.service.CloudVendorService;
 
 import java.util.List;
 
 public class CloudVendorServiceImpl implements CloudVendorService {
+
+    CloudVendorRepository cloudVendorRepository;
+
+    public CloudVendorServiceImpl(CloudVendorRepository cloudVendorRepository) {
+        this.cloudVendorRepository = cloudVendorRepository;
+    }
+
     @Override
     public String createCloudVendor(CloudVendor cloudVendor) {
         return null;
