@@ -3,9 +3,12 @@ package com.thedorcode.restdemo.service.impl;
 import com.thedorcode.restdemo.model.CloudVendor;
 import com.thedorcode.restdemo.repository.CloudVendorRepository;
 import com.thedorcode.restdemo.service.CloudVendorService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class CloudVendorServiceImpl implements CloudVendorService {
 
     CloudVendorRepository cloudVendorRepository;
