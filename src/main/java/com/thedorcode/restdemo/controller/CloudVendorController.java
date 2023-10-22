@@ -2,7 +2,10 @@ package com.thedorcode.restdemo.controller;
 
 
 import com.thedorcode.restdemo.model.CloudVendor;
+import com.thedorcode.restdemo.response.ResponseHandler;
 import com.thedorcode.restdemo.service.CloudVendorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +24,10 @@ public class CloudVendorController {
 
     // Read Specific Cloud vendor details
     @GetMapping("{vendorId}")
-    public CloudVendor getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
-        return cloudVendorService.getCloudVendor(vendorId);
+    public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
+        return ResponseHandler.responseBuilder("Requested vendor details are given here", HttpStatus.OK,
+                cloudVendorService.getCloudVendor(vendorId));
+
     }
 
     // Read all cloud Vendor details from DB
