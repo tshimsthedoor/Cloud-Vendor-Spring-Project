@@ -2,39 +2,53 @@ package com.thedorcode.restdemo.controller;
 
 
 import com.thedorcode.restdemo.model.CloudVendor;
+import com.thedorcode.restdemo.service.CloudVendorService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/cloudvendor")
 public class CloudVendorController {
 
-    CloudVendor cloudVendor;
 
+    CloudVendorService cloudVendorService;
+
+    public CloudVendorController(CloudVendorService cloudVendorService) {
+        this.cloudVendorService = cloudVendorService;
+    }
+
+
+    // Read Specific Cloud vendor details
     @GetMapping("{vendorId}")
-    public CloudVendor getCloudVendorDetails(String vendorId) {
-       // return new CloudVendor("C1", "Ida Ntumba",
-        //        "4 Street main road", "0987654321");
-        return cloudVendor;
+    public CloudVendor getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
+        return cloudVendorService.getCloudVendor(vendorId);
+    }
+
+    // Read all cloud Vendor details from DB
+    @GetMapping()
+    public List< CloudVendor> getAllCloudVendorDetails() {
+        return cloudVendorService.getAllCloudVendors();
     }
 
     @PostMapping
     public String createCloudVendorDetails(@RequestBody CloudVendor cloudVendor)
     {
-        this.cloudVendor = cloudVendor;
-        return  "Cloud vendor create successfully";
+        cloudVendorService.createCloudVendor(cloudVendor);
+        return "Cloud vendor Created Successfullly";
     }
 
     @PutMapping
     public String updateCloudVendorDetails(@RequestBody CloudVendor cloudVendor)
     {
-        this.cloudVendor = cloudVendor;
+        cloudVendorService.updateCloudVendor(cloudVendor);
         return  "Cloud vendor updated successfully";
     }
 
     @DeleteMapping("{vendorId}")
-    public String deleteCloudVendorDetails(String vendorId)
+    public String deleteCloudVendorDetails(@PathVariable("vendorId") String vendorId)
     {
-        this.cloudVendor = null;
+        cloudVendorService.deleteCloudVendor(vendorId);
         return  "Cloud vendor deleted successfully";
     }
 }
