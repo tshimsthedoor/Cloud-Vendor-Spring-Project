@@ -1,5 +1,6 @@
 package com.thedorcode.restdemo.service.impl;
 
+import com.thedorcode.restdemo.exception.CloudVendorNotFoundException;
 import com.thedorcode.restdemo.model.CloudVendor;
 import com.thedorcode.restdemo.repository.CloudVendorRepository;
 import com.thedorcode.restdemo.service.CloudVendorService;
@@ -41,6 +42,8 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     @Override
     public CloudVendor getCloudVendor(String cloudVendorId) {
         // More Business Logic
+        if(cloudVendorRepository.findById(cloudVendorId).isEmpty())
+            throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist");
         return cloudVendorRepository.findById(cloudVendorId).get();
     }
 
