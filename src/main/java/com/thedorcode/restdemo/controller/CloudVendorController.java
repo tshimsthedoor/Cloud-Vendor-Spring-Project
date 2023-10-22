@@ -35,20 +35,20 @@ public class CloudVendorController {
     public String createCloudVendorDetails(@RequestBody CloudVendor cloudVendor)
     {
         cloudVendorService.createCloudVendor(cloudVendor);
-        return "Cloud vendor Created Successfullly";
+        return "Cloud vendor Created Successfully";
     }
 
     @PutMapping
     public String updateCloudVendorDetails(@RequestBody CloudVendor cloudVendor)
     {
         cloudVendorService.updateCloudVendor(cloudVendor);
-        return  "Cloud vendor updated successfully";
+        return  "Cloud vendor updated Successfully";
     }
 
     @DeleteMapping("{vendorId}")
     public String deleteCloudVendorDetails(@PathVariable("vendorId") String vendorId)
     {
         cloudVendorService.deleteCloudVendor(vendorId);
-        return  "Cloud vendor deleted successfully";
+        return  "Cloud vendor deleted Successfully";
     }
 }
