@@ -16,26 +16,34 @@ public class CloudVendorServiceImpl implements CloudVendorService {
 
     @Override
     public String createCloudVendor(CloudVendor cloudVendor) {
-        return null;
+        // More Business Logic
+        cloudVendorRepository.save(cloudVendor);
+        return "The value is success";
     }
 
     @Override
     public String updateCloudVendor(CloudVendor cloudVendor) {
-        return null;
+        // More Business Logic
+        cloudVendorRepository.save(cloudVendor);
+        return "The value has been updated";
     }
 
     @Override
     public String deleteCloudVendor(String cloudVendorId) {
-        return null;
+        // More Business Logic
+        cloudVendorRepository.deleteById(cloudVendorId);
+        return "The value has been deleted";
     }
 
     @Override
     public CloudVendor getCloudVendor(String cloudVendorId) {
-        return null;
+        // More Business Logic
+        return cloudVendorRepository.findById(cloudVendorId).get();
     }
 
     @Override
     public List<CloudVendor> getAllCloudVendors() {
-        return null;
+        // More Business Logic
+        return cloudVendorRepository.findAll();
     }
 }
